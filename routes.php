@@ -2,6 +2,15 @@
 
 $router = new Zarna0x\Core\Router;
 
+
+$router->get('',function () {
+	echo json_encode([
+      'response' => 'homepage'
+	]);
+});
+
+
+
 $router->post('auth',[
   'controller' => 'Main',
   'method' => 'auth'

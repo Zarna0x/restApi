@@ -10,7 +10,7 @@ class Router
 
 	public function __construct()
 	{
-        $this->_uri = strip_tags(strtolower(trim($_GET['url'])));
+        $this->_uri = (isset($_GET['url'])) ? strip_tags(strtolower(trim($_GET['url']))) : '' ;
 	}
 
 	public function get($endpoint, $value)
@@ -27,7 +27,11 @@ class Router
 
 	public function run()
 	{
+
+
        $requestMethod = $_SERVER['REQUEST_METHOD'];
+        
+       
        
        if (array_key_exists($this->_uri, $this->_routes[$requestMethod]) == false) {
           
@@ -36,7 +40,6 @@ class Router
 
        $endpointInfo = $this->_routes[$requestMethod][$this->_uri];
        
-
 
        if (!is_array($endpointInfo) && !is_string($endpointInfo) && !(is_callable($endpointInfo) && $endpointInfo instanceof \Closure)) {
           Base::errorResponse(Response::WRONG_ENDPOINT_INFO,'Wrong route value.'); 

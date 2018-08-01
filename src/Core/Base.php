@@ -6,12 +6,21 @@ class Base
 {
 	public static function errorResponse ($status, $message) 
 	{
-      
-
-      echo json_encode([
+	  echo json_encode([
            'error' => [
               'status' => $status,
               'message' => $message
+           ]
+       ]);
+       exit;
+	}
+
+	public static function sendResponse($status,$message)
+	{
+       echo json_encode([
+           'response' => [
+              'status' => $status,
+              'data' => $message
            ]
        ]);
        exit;
