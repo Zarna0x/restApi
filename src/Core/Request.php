@@ -6,12 +6,20 @@ class Request
 {
 	public static function post( $key )
 	{
-       return trim(htmlentities(strip_tags($_POST[$key])));
+       if (isset($_POST) && !empty($_POST)  ) {
+          return trim(htmlentities(strip_tags($_POST[$key])));
+       }
+
+       return false;
 	}
 
 	public static function get( $key )
 	{
-       return trim(htmlentities(strip_tags($_GET[$key])));
+       if (isset($_GET) && !empty($_GET)  ) {
+          return trim(htmlentities(strip_tags($_GET[$key])));
+       }
+
+       return false;
 	}
 
 

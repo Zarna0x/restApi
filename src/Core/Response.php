@@ -31,6 +31,10 @@ class Response
 
 	const JWT_PROCESSING_ERROR = 890;
 
+	const METHOD_ERROR = 1232;
+
+	const ACCESS_TOKEN_ERROR = 405;
+
 
 	/** Success reponses **/
 

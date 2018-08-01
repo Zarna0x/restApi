@@ -10,7 +10,7 @@ class Router
 
 	public function __construct()
 	{
-        $this->_uri = (isset($_GET['url'])) ? strip_tags(strtolower(trim($_GET['url']))) : '' ;
+        $this->_uri = Base::getCurrentUrl();
 	}
 
 	public function get($endpoint, $value)
@@ -78,7 +78,16 @@ class Router
            Base::errorResponse(Response::METHOD_NOT_FOUND,'Method '.$method.' doesnot exists in controller '.$fullControllerClass); 
        }
 
-       $rMeth = new \ReflectionMethod($controllerInstance,$method);
-       $rMeth->invoke($controllerInstance);
+       try {  
+
+         $rMeth = new \ReflectionMethod($controllerInstance,$method);
+         $rMeth->invoke($controllerInstance);
+
+       } catch (\ReflectionException $e) {
+
+         Base::errorResponse(Response::METHOD_ERROR,$e->getMessage());
+
+       }
+
 	}
 }

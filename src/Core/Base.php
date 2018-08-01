@@ -26,6 +26,12 @@ class Base
        exit;
 	}
 
+	public static function getCurrentUrl()
+	{
+		return (isset($_GET['url'])) ? strip_tags(strtolower(trim($_GET['url']))) : '' ;
+	}
+
+
 	public function _($Key,$Collection,$Default = '')
 	{
 	   $Keys = explode('.', $Key);
@@ -45,4 +51,7 @@ class Base
 
 	   return $Data;
 	}
+
+
+
 }

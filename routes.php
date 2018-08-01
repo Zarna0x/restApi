@@ -16,11 +16,9 @@ $router->post('auth',[
   'method' => 'auth'
 ]);
 
-
-
-$router->post('getCustomers',[
-  'contoller' => 'customers',
-  'method' => 'getCustomers'
+$router->post('items',[
+  'controller' => 'Main',
+  'method' => 'getItems'
 ]);
 
 $router->get('getjson','main@getJson');
