@@ -1,1 +1,1 @@
-Rest api... still under developement
+Rest api... still under development
