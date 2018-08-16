@@ -23,4 +23,6 @@ $router->post('items',[
 
 $router->get('getjson','main@getJson');
 
+$router->get('newendpoint','controller@name');
+
 $router->run();
